@@ -1,0 +1,26 @@
+<apex:page controller="ZipCodeWebserviceController" setup="false" sidebar="false" showHeader="true">
+    <apex:sectionHeader title="webservice" subtitle="Zip Code Search"/>
+    <apex:form >
+    	<apex:pageBlock >
+        	<apex:pageBlockSection title="Search Zip Code" columns="2" collapsible="false">
+            	<apex:inputText label="Enter Zip Code : " html-placeholder="Enter Zip Code Number" value="{!zipCodeNumber}"/>
+                <apex:commandButton value="Search Details" rerender="pgBlock" action="{!searchZipCode}"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        
+        <apex:pageBlock title="Number of Records Found : ({!infoList.size})" id="pgBlock">
+            
+        	<apex:pageBlockTable value="{!infoList}" var="pos">
+                <apex:column value="{!pos.postal_code}" headerValue="Postal Code"/>
+                <apex:column value="{!pos.city}" headerValue="Branch area"/>
+                <apex:column value="{!pos.province}" headerValue="City"/>
+                <apex:column value="{!pos.province_code}" headerValue="City code"/>
+                <apex:column value="{!pos.state}" headerValue="State"/>
+                <apex:column value="{!pos.state_code}" headerValue="State Code"/>
+                <apex:column value="{!pos.country_code}" headerValue="County Code"/>
+                <apex:column value="{!pos.latitude}" headerValue="Latitude"/>
+                <apex:column value="{!pos.longitude}" headerValue="Longitude"/>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
